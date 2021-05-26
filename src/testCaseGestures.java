@@ -53,7 +53,7 @@ public class testCaseGestures extends Base{
 		Thread.sleep(1000);
 		driver.navigate().back();
 		
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		driver.findElementByAndroidUIAutomator("text(\"Views\")").click();
 		//Scroll until you see the word WebView in the screen
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));");
