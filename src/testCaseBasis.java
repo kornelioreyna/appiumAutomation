@@ -7,7 +7,7 @@ public class testCaseBasis extends Base {
 
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		// TODO Auto-generated method stub
-		AndroidDriver<AndroidElement> driver = Capabilities();
+		AndroidDriver<AndroidElement> driver = Capabilities("emulator");
 		driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
 		Thread.sleep(1000);
 		driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']").click();

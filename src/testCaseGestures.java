@@ -18,7 +18,7 @@ public class testCaseGestures extends Base{
 
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		// TODO Auto-generated method stub
-		AndroidDriver<AndroidElement> driver = Capabilities();
+		AndroidDriver<AndroidElement> driver = Capabilities("emulator");
 		TouchAction t=new TouchAction(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElementByAndroidUIAutomator("text(\"Views\")").click();
@@ -56,7 +56,14 @@ public class testCaseGestures extends Base{
 		Thread.sleep(2000);
 		driver.findElementByAndroidUIAutomator("text(\"Views\")").click();
 		//Scroll until you see the word WebView in the screen
-		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));");
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Drag and Drop\"));");
+		driver.findElementByAndroidUIAutomator("text(\"Drag and Drop\")").click();
+		//Drag and Drop an object
+		//LongPress, move and release
+		WebElement circleDrag = driver.findElementsByClassName("android.view.View").get(0);
+		WebElement circleDrop = driver.findElementsByClassName("android.view.View").get(2);
+		t.longPress(longPressOptions().withElement(element(circleDrag))).moveTo(element(circleDrop)).release().perform();
+		
 		
 	}
 

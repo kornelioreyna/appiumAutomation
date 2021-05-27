@@ -8,14 +8,19 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Base {
 
-	public static AndroidDriver<AndroidElement> Capabilities() throws MalformedURLException  {
+	public static AndroidDriver<AndroidElement> Capabilities(String device) throws MalformedURLException  {
 		// TODO Auto-generated method stub
 		//Store the path of the app in f variable and then look for the app in that path
 		File f = new File("src");
 		File fs=new File (f,"ApiDemos-debug.apk");
 		//Declare desired capabilities
 		DesiredCapabilities cap= new DesiredCapabilities();
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME , "PixelAndroid9");
+		if(device.equalsIgnoreCase("emulator")) {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME , "PixelAndroid9");
+		}else {
+			cap.setCapability(MobileCapabilityType.DEVICE_NAME , "Android Device");
+		}
+		
 		cap.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
 		AndroidDriver<AndroidElement> driver =new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"),cap);
